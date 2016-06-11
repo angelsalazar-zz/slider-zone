@@ -8,63 +8,15 @@
              display: block;
              height:40%;
              position: relative;
-             border: 1px solid blue;
          }
     </style>
-    <div id="sliderZone"></div>
+    <content></content>
   </template>
 
   <script>
       Polymer({
           //Element's name
-          is: 'slider-zone',
-          //Slider-zone's properties
-          properties: {
-              //Handles attr specifis how many slider-handle tags will be rendered 
-              handles: {
-                  type: Number,             //Type  -> Number
-                  value: 1,                 //value -> Default 1 (only one slider-handle tag will be rendered)
-                  notify: true,             //notify (true) -> allow two-way data binding 
-                  reflectToAttribute: true  //reflectToAttribute (true) -> keep in sync property value and an HTML attribute
-              }
-                                
-          },
-          //Defining observers events
-          observers: [
-              '_handlesChanged(handles)',
-          ],
-          /*Private function
-           *Append slider-handles to the slider-zone
-           *@params numberOfHandles
-           */
-          setHandles: function(numberOfHandles){
-              var i = numberOfHandles;
-              if(numberOfHandles != 0){
-                  i--;
-                  this._attachSliderHandle();
-                  this.setHandles(i);  
-              }else{
-                  return;
-              }
-              
-          },
-          /*Private function
-           *Create a slider-handle and append it to the slider-zone
-           */
-          _attachSliderHandle:function(){
-              var s_h = document.createElement('slider-switch');        //create slider-handle component
-              Polymer.dom(this.$.sliderZone).appendChild(s_h);          //Append slider_handle to the slider zone
-          },
-          /*Observer callback
-           *fires whenever the handles property changes
-           */
-          _handlesChanged:function(handles){
-              if(!(this.$.sliderZone.children.length > 0))
-                  this.setHandles(handles);
-              else
-                  this.setHandles((handles-this.$.sliderZone.children.length));
-          }
-
+          is: 'slider-zone'
 
     });
   </script>
