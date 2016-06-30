@@ -1,5 +1,4 @@
 <link rel="import" href="../polymer/polymer.html">
-<link rel="import" href="../slider-switch/slider-switch.html">
 
 <dom-module id="slider-zone">
   <template>
@@ -16,8 +15,36 @@
   <script>
       Polymer({
           //Element's name
-          is: 'slider-zone'
+          is: 'slider-zone',
+          properties:{
+              hasReachedMaxLimit:{
+                  type: Boolean,
+                  value: false,
+                  reflectToAttribute: true
+              },
+              hasReachedMinLimit:{
+                  type: Boolean,
+                  value: false,
+                  reflectToAttribute: true
+              },
+          },
+          checkLimitReached:function(position){
+                if(position === 0){
+                    this.hasReachedMinLimit = true;
+                    this.limit = true;
+                    return;
+                }else if(position === this.getBoundingClientRect().width){
+                    this.hasReachedMaxLimit = true;
+                    this.limit = true;
+                    return;
+                }else{
+                    this.hasReachedMinLimit = false;
+                    this.hasReachedMaxLimit = false;
+                    return;
+                }
+          }
 
     });
   </script>
 </dom-module>
+
