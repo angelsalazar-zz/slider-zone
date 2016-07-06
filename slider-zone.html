@@ -17,25 +17,33 @@
           //Element's name
           is: 'slider-zone',
           properties:{
-              hasReachedMaxLimit:{
-                  type: Boolean,
-                  value: false,
-                  reflectToAttribute: true
-              },
-              hasReachedMinLimit:{
-                  type: Boolean,
-                  value: false,
-                  reflectToAttribute: true
-              },
+            minValue:{
+              type:Number,
+              value: 0,
+              reflectToAttribute: true
+            },
+            maxValue:{
+              type:Number,
+              value: 100,
+              reflectToAttribute: true
+            },
+            hasReachedMaxLimit:{
+              type: Boolean,
+              value: false,
+              reflectToAttribute: true
+            },
+            hasReachedMinLimit:{
+              type: Boolean,
+              value: false,
+              reflectToAttribute: true
+            },
           },
           checkLimitReached:function(position){
                 if(position === 0){
                     this.hasReachedMinLimit = true;
-                    this.limit = true;
                     return;
                 }else if(position === this.getBoundingClientRect().width){
                     this.hasReachedMaxLimit = true;
-                    this.limit = true;
                     return;
                 }else{
                     this.hasReachedMinLimit = false;
@@ -47,4 +55,3 @@
     });
   </script>
 </dom-module>
-
